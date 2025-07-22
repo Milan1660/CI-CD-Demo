@@ -2,6 +2,11 @@ name: Test project
 
 on: [push, pull_request]
 
+permissions:
+  checks: write        # For test reports
+  contents: read       # To access repo contents
+  pull-requests: write # If comments or annotations on PRs are used
+
 jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
