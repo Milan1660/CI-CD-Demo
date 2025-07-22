@@ -3,8 +3,8 @@ name: Test project
 on: [push, pull_request]
 
 permissions:
-  checks: write        # For test reports
-  contents: read       # To access repo contents
+  checks: write # For test reports
+  contents: read # To access repo contents
   pull-requests: write # If comments or annotations on PRs are used
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
           artifactsPath: ${{ matrix.testMode }}-artifacts
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Test Results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+          coverageOptions: "generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -54,7 +54,7 @@ jobs:
           name: Coverage results for ${{ matrix.testMode }}
           path: ${{ steps.tests.outputs.coveragePath }}
 
-buildStandalone:
+  buildForStanalone:
     name: Build (Standalone)
     runs-on: ubuntu-latest
     needs: testAllModes
